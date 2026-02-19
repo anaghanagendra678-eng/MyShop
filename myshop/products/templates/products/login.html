@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sign Up / Login - MyShop</title>
+    {% load static %}
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: lavender;
+            background-image: url("{% static 'products/leaves.jpg' %}");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            margin: 0;
+            padding: 0;
+        }
+        .auth-container {
+            max-width: 400px;
+            margin: 100px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 2px 2px 8px rgba(0,0,0,0.2);
+        }
+        h2 {
+            text-align: center;
+            color: #4b0082;
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+            color: #333;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        button {
+            width: 100%;
+            margin-top: 20px;
+            padding: 12px;
+            background: #9370db;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #6a5acd;
+        }
+        .toggle-links {
+            text-align: center;
+            margin-top: 15px;
+        }
+        .toggle-links a {
+            color: #9370db;
+            font-weight: bold;
+            text-decoration: none;
+        }
+        .toggle-links a:hover {
+            color: #6a5acd;
+        }
+        .hidden {
+            display: none;
+        }
+        /* Messages styling */
+        .messages {
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        .messages li {
+            list-style: none;
+            padding: 8px;
+            border-radius: 4px;
+            margin: 5px 0;
+        }
+        .messages .success {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        .messages .error {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+    </style>
+    <script>
+        function showForm(formId, titleText) {
+            document.getElementById("login-form").classList.add("hidden");
+            document.getElementById("signup-form").classList.add("hidden");
+            document.getElementById(formId).classList.remove("hidden");
+            document.getElementById("form-title").innerText = titleText;
+        }
+    </script>
+</head>
+<body>
+    <div class="auth-container">
+        <h2 id="form-title">Sign Up</h2>
+
+        <!-- Messages -->
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li class="{{ message.tags }}">{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+
+        <!-- Sign Up Form (default visible) -->
+        <form id="signup-form" method="post" action="{% url 'signup' %}">
+            {% csrf_token %}
+            <label for="new_username">Username</label>
+            <input type="text" name="new_username" required>
+
+            <label for="email">Email</label>
+            <input type="email" name="email" required>
+
+            <label for="new_password">Password</label>
+            <input type="password" name="new_password" required>
+
+            <button type="submit">Sign Up</button>
+        </form>
+
+        <!-- Login Form (hidden by default) -->
+        <form id="login-form" class="hidden" method="post" action="{% url 'login' %}">
+            {% csrf_token %}
+            <label for="username">Username</label>
+            <input type="text" name="username" required>
+
+            <label for="password">Password</label>
+            <input type="password" name="password" required>
+
+            <button type="submit">Login</button>
+        </form>
+
+        <!-- Toggle Links -->
+        <div class="toggle-links">
+            <a href="javascript:void(0)" onclick="showForm('login-form','Login')">Already have an account? Login</a> |
+            <a href="javascript:void(0)" onclick="showForm('signup-form','Sign Up')">New user? Sign Up</a>
+        </div>
+    </div>
+</body>
+</html>

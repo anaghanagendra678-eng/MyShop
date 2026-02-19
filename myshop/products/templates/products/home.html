@@ -1,0 +1,152 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MyShop - Computer Accessories</title>
+    <!-- External CSS -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #E6E6FA; /* lavender background */
+        }
+        .card-img-top {
+            height: 250px;
+            object-fit: cover;
+        }
+        .logo {
+            width: 120px;
+            display: block;
+            margin: 0 auto 20px auto;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
+        <div class="container-fluid">
+            <!-- ✅ Logo integrated into navbar -->
+            <a class="navbar-brand fw-bold" href="#">
+                <img src="{% static 'products/myshoplogo.png' %}" alt="MyShop Logo" style="width:50px; display:inline-block; margin-right:10px;">
+                MyShop
+            </a>
+            <div class="collapse navbar-collapse justify-content-end">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a href="{% url 'products:order_history' %}" class="btn btn-lavender">My Orders</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'cart' %}" class="btn btn-outline-primary">🛒 Cart</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Heading -->
+    <div class="container mt-4">
+        <h1 class="text-center mb-5">Welcome to MyShop</h1>
+
+        <!-- ✅ Product Grid -->
+        <div class="row">
+            <!-- Mouse -->
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow-sm">
+                    <img src="{% static 'products/mouse.jpg' %}" class="card-img-top" alt="Mouse">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Mouse</h5>
+                        <p class="card-text">High precision optical mouse for smooth navigation.</p>
+                        <p class="fw-bold">₹500.00</p>
+                        <a href="{% url 'product_detail' 1 %}" class="btn btn-primary">View Details</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Keyboard -->
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow-sm">
+                    <img src="{% static 'products/keyboard.jpg' %}" class="card-img-top" alt="Keyboard">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Keyboard</h5>
+                        <p class="card-text">Durable mechanical keyboard with backlight.</p>
+                        <p class="fw-bold">₹1000.00</p>
+                        <a href="{% url 'product_detail' 2 %}" class="btn btn-primary">View Details</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Monitor -->
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow-sm">
+                    <img src="{% static 'products/monitor.jpg' %}" class="card-img-top" alt="Monitor">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Monitor</h5>
+                        <p class="card-text">Full HD 24-inch monitor with crisp display.</p>
+                        <p class="fw-bold">₹7000.00</p>
+                        <a href="{% url 'product_detail' 3 %}" class="btn btn-primary">View Details</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Webcam -->
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow-sm">
+                    <img src="{% static 'products/webcam.jpg' %}" class="card-img-top" alt="Webcam">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Webcam</h5>
+                        <p class="card-text">HD webcam for video calls and streaming.</p>
+                        <p class="fw-bold">₹2500.00</p>
+                        <a href="{% url 'product_detail' 4 %}" class="btn btn-primary">View Details</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Speaker -->
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow-sm">
+                    <img src="{% static 'products/speaker.jpg' %}" class="card-img-top" alt="Speaker">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Speaker</h5>
+                        <p class="card-text">Portable Bluetooth speaker with deep bass.</p>
+                        <p class="fw-bold">₹5000.00</p>
+                        <a href="{% url 'product_detail' 5 %}" class="btn btn-primary">View Details</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Headphone -->
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow-sm">
+                    <img src="{% static 'products/headphone.jpg' %}" class="card-img-top" alt="Headphone">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Headphone</h5>
+                        <p class="card-text">Noise-cancelling headphones for immersive sound.</p>
+                        <p class="fw-bold">₹5500.00</p>
+                        <a href="{% url 'product_detail' 6 %}" class="btn btn-primary">View Details</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mouse Pad -->
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow-sm">
+                    <img src="{% static 'products/mousepad.jpg' %}" class="card-img-top" alt="Mouse Pad">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Mouse Pad</h5>
+                        <p class="card-text">Enhance your accuracy and control with a surface designed for seamless navigation.</p>
+                        <p class="fw-bold">₹100.00</p>
+                        <a href="{% url 'product_detail' 7 %}" class="btn btn-primary">View Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

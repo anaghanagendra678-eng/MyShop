@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sign Up - MyShop</title>
+    {% load static %}
+</head>
+<body>
+    <h2>Create Account</h2>
+    {% if messages %}
+        <ul>
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    <form method="post" action="{% url 'signup' %}">
+        {% csrf_token %}
+        <label for="new_username">Username</label>
+        <input type="text" name="new_username" required>
+
+        <label for="email">Email</label>
+        <input type="email" name="email" required>
+
+        <label for="new_password">Password</label>
+        <input type="password" name="new_password" required>
+
+        <button type="submit">Sign Up</button>
+    </form>
+</body>
+</html>
